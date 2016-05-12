@@ -43,7 +43,7 @@ namespace Contacts.Controllers
             string search = RequestQueryPairs["searchvalue"];
             if (!String.IsNullOrEmpty(search))
             {
-                allContactsProcessed = allContactsProcessed.Where(c => c.first_name.Contains(search, StringComparison.CurrentCultureIgnoreCase) || c.last_name.Contains(search, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                allContactsProcessed = allContactsProcessed.Where(c => (c.first_name != null && c.first_name.Contains(search, StringComparison.CurrentCultureIgnoreCase)) || (c.last_name != null && c.last_name.Contains(search, StringComparison.CurrentCultureIgnoreCase))).ToList();
             }
 
             if (RequestQueryPairs["ordercolumn"] != null && RequestQueryPairs["orderdir"] != null)
