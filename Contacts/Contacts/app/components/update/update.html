@@ -1,0 +1,12 @@
+﻿<contactidcontrol actionlabel="'Get'" uniqueid="uniqueid" contactidobject="contactidobject" actionbuttonclicked="GetActionClicked"></contactidcontrol>
+<br />
+<contactcontrol uniqueid="uniqueid" isreadonly="isreadonly" contactobject="contactobject" ng-show="iscontactcontrolvisible"></contactcontrol>
+<br />
+<div class="row" ng-show="iscontactcontrolvisible">
+    <div class="col-md-12">
+        <div class="pull-right">
+            <button class="btn btn-default" style="margin-right:10px" type="button" ng-click="cancelbuttonclicked()" ng-disabled="!isdirty">Cancel</button>
+            <button class="btn btn-default" type="button" ng-click="updatebuttonclicked()" ng-disabled="contactobject.first_name.length==0 || !isdirty">Save</button>
+        </div>
+    </div>
+</div>

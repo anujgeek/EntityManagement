@@ -1,0 +1,11 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'contactidtextbox'}}">Id * (numeric input only)</label>
+        <div class="input-group">
+            <input type="number" id="{{::uniqueid + 'contactidtextbox'}}" class="form-control" ng-model="contactidobject.id">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="actionbuttonclicked()" ng-disabled="contactidobject.id==null">{{actionlabel}}</button>
+            </span>
+        </div>
+    </div>
+</div>

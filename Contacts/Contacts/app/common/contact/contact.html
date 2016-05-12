@@ -1,0 +1,68 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'firstname'}}">First Name <span ng-hide="isreadonly">*</span></label>
+        <input type="text" id="{{::uniqueid + 'firstname'}}" ng-model="contactobject.first_name" class="form-control" ng-readonly="isreadonly">
+    </div>
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'lastname'}}">Last Name</label>
+        <input type="text" id="{{::uniqueid + 'lastname'}}" ng-model="contactobject.last_name" class="form-control" ng-readonly="isreadonly">
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'companyname'}}">Company</label>
+        <input type="text" id="{{::uniqueid + 'companyname'}}" ng-model="contactobject.company_name" class="form-control" ng-readonly="isreadonly">
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'address'}}">Address</label>
+        <input type="text" id="{{::uniqueid + 'address'}}" ng-model="contactobject.address" class="form-control" ng-readonly="isreadonly">
+    </div>
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'city'}}">City</label>
+        <input type="text" id="{{::uniqueid + 'city'}}" ng-model="contactobject.city" class="form-control" ng-readonly="isreadonly">
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'state'}}">State</label>
+        <input type="text" id="{{::uniqueid + 'state'}}" ng-model="contactobject.state" class="form-control" ng-readonly="isreadonly">
+    </div>
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'zip'}}">Zip</label>
+        <input type="text" id="{{::uniqueid + 'zip'}}" ng-model="contactobject.zip" class="form-control" ng-readonly="isreadonly">
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'phone'}}">Phone</label>
+        <input type="text" id="{{::uniqueid + 'phone'}}" ng-model="contactobject.phone" class="form-control" ng-readonly="isreadonly">
+    </div>
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'workphone'}}">Work Phone</label>
+        <input type="text" id="{{::uniqueid + 'workphone'}}" ng-model="contactobject.work_phone" class="form-control" ng-readonly="isreadonly">
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'email'}}">Email</label>
+        <input type="text" id="{{::uniqueid + 'email'}}" ng-model="contactobject.email" class="form-control" ng-readonly="isreadonly">
+    </div>
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'url'}}">Url</label>
+        <input type="text" id="{{::uniqueid + 'url'}}" ng-model="contactobject.url" class="form-control" ng-readonly="isreadonly">
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label for="{{::uniqueid + 'dob'}}">DOB</label>
+        <input id="{{::uniqueid + 'dob'}}" kendo-date-picker ng-model="contactobject.dob" ng-readonly="isreadonly" style="width: 100%;" />
+    </div>
+</div>

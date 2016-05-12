@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contacts Management</title>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css" />-->
+    <!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">-->
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" />
+    <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.jqueryui.min.css" />-->
+    <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" />-->
+    <link rel="stylesheet" href="app/components/index/index.css" />
+
+</head>
+<body id="page-top" ng-app="MainModule" ng-strict-di ng-controller="MainController">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Contacts Management</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="about" ng-controller="AboutController" class="jumbotron" style="padding: 20px 0px 0px 0px;margin-bottom: 10px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div ng-include="'app/components/about/about.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="#get" aria-controls="get" role="tab" data-toggle="tab">Get</a></li>
+                        <li role="presentation"><a href="#getlist" aria-controls="getlist" role="tab" data-toggle="tab">Get List</a></li>
+                        <li role="presentation"><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add</a></li>
+                        <li role="presentation"><a href="#update" aria-controls="update" role="tab" data-toggle="tab">Update</a></li>
+                        <li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="get">
+                            <div ng-controller="GetController" data-uniqueid="getcontrol" ng-include="'app/components/get/get.html'" style="padding: 10px"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="getlist">
+                            <div ng-controller="GetListController" ng-include="'app/components/getlist/getlist.html'" data-onload="initialize()" style="padding: 10px"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="add">
+                            <div ng-controller="AddController" data-uniqueid="addcontrol" ng-include="'app/components/add/add.html'" style="padding: 10px"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="update">
+                            <div ng-controller="UpdateController" data-uniqueid="updatecontrol" ng-include="'app/components/update/update.html'" style="padding: 10px"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="delete">
+                            <div ng-controller="DeleteController" data-uniqueid="deletecontrol" ng-include="'app/components/delete/delete.html'" style="padding: 10px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="simplemodaldialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="simplemodaldialogLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="getlistErrorDialogLabel">{{simplemodaldialog.title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        {{simplemodaldialog.message}}
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--JavaScript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2016.1.112/js/kendo.ui.core.min.js"></script>
+    <!--<script src="http://kendo.cdn.telerik.com/2016.1.112/js/kendo.angular.min.js"></script>-->
+    <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <!--<script src="https://cdn.datatables.net/1.10.10/js/dataTables.jqueryui.min.js"></script>-->
+    <!--<script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>-->
+    <script src="app/assets/js/constants.js"></script>
+    <script src="app/module.js"></script>
+    <script src="app/components/index/index.js"></script>
+    <script src="app/components/about/about.js"></script>
+    <script src="app/components/get/get.js"></script>
+    <script src="app/components/getlist/getlist.js"></script>
+    <script src="app/components/add/add.js"></script>
+    <script src="app/components/update/update.js"></script>
+    <script src="app/components/delete/delete.js"></script>
+    <script src="app/assets/js/filters.js"></script>
+    <script src="app/assets/js/directives.js"></script>
+    <script src="app/assets/js/services.js"></script>
+
+</body>
+</html>
